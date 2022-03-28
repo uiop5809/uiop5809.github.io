@@ -4,11 +4,5 @@ main:
     url: /algorithm/
   - title: "백준"
     url: /baekjoon/
-  - title: "Git"
-    url: /git/
-  - title: "카테고리"
-    url: /categories/
-  - title: "About"
-    url: /about/
-  - title: "연도별 포스트"
-    url: /posts/
+    title: "웹 개발"
+    url: 
