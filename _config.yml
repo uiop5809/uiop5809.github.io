@@ -102,7 +102,7 @@ analytics:
 # Site Author
 author:
   name: "Park Ye Jin"
-  avatar: # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar: "/assets/images/hs.jpg" # "/assets/images/bio-photo.jpg"
   bio: "Web Developer in The Future ISTJ"
   location: "Incheon Metropolitan City"
   email:
@@ -112,13 +112,13 @@ author:
       url: "mailto:uiop5809@naver.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://uiop5809.github.io/blog/"
+      # url: "https://uiop5809.github.io/blog/"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://facebook.com/profile.php?id=100004451866669/"
+      # url: "https://facebook.com/profile.php?id=100004451866669/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/uiop5809"
