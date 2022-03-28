@@ -1,8 +1,8 @@
 # main links
 main:
-  - title: "알고리즘"
+  - title: "Algorithm"
     url: /algorithm/
-  - title: "백준"
+  - title: "Baekjoon"
     url: /baekjoon/
-    title: "웹 개발"
-    url: 
+  - title: "Web"
+    url: /web/

@@ -19,7 +19,7 @@ locale: "ko-KR"
 title: "Yejin's Velog"
 title_separator: "-"
 subtitle: 개발 블로그
-name: "박예진"
+name: "Park Ye Jin"
 description: "Web Developer in The Future ISTJ"
 url: "https://uiop5809.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
