@@ -1,10 +1,10 @@
 # main links
 main:
   - title: "Algorithm"
-    url: /algorithm/
+    url: /Algorithm/
   - title: "Baekjoon"
     url: /Baekjoon/
   - title: "Web"
     url: /Web/
   - title: "Tag"
-    url: /Tag/
+    url: /tags/
