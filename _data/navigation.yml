@@ -5,4 +5,6 @@ main:
   - title: "Baekjoon"
     url: /Baekjoon/
   - title: "Web"
-    url: /web/
+    url: /Web/
+  - title: "Tag"
+    url: /Tag/
