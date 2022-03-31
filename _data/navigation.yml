@@ -6,8 +6,6 @@ main:
     url: /Baekjoon/
   - title: "Web"
     url: /Web/
-  - title: "Tag"
-    url: /tags/
   - title: "Category"
     url: /categories/
   - title: "Year"
