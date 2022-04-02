@@ -6,5 +6,7 @@ main:
     url: /Baekjoon/
   - title: "Web"
     url: /Web/
+  - title: "Tags"
+    url: /tags/
   - title: "Year"
     url: "/year-archive/"
