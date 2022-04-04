@@ -3,7 +3,7 @@ layout: single
 title: "[React] Props와 State, Render함수"
 
 categories:
-  - Web
+  - React
 
 tags:
   - Web

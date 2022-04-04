@@ -3,7 +3,7 @@ layout: single
 title: "[React] Component Lifecycle"
 
 categories:
-  - Web
+  - React
 
 tags:
   - Web

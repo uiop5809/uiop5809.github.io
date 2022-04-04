@@ -2,10 +2,8 @@
 main:
   - title: "Algorithm"
     url: /Algorithm/
-  - title: "Baekjoon"
-    url: /Baekjoon/
-  - title: "Web"
-    url: /Web/
+  - title: "Category"
+    url: /categories/
   - title: "Tags"
     url: /tags/
   - title: "Year"

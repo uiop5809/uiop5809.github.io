@@ -3,7 +3,7 @@ layout: single
 title: "[React] React.createElement로 컴포넌트 만들기"
 
 categories:
-  - Web
+  - React
 
 tags:
   - Web

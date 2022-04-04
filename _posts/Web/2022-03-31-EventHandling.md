@@ -3,7 +3,7 @@ layout: single
 title: "[React] Event Handling"
 
 categories:
-  - Web
+  - React
 
 tags:
   - Web
