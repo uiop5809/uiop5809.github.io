@@ -270,8 +270,10 @@ defaults:
   # _posts
   - scope:
       path: ""
-      type: posts
+      type: docs
     values:
+      sidebar:
+        nav: "docs"
       layout: single
       show_date: true # 포스팅 날짜 표시
       author_profile: true
@@ -279,6 +281,3 @@ defaults:
       comments: true
       share: true
       related: true
-
-sidebar:
-  nav: "docs"
