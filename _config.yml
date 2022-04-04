@@ -270,7 +270,7 @@ defaults:
   # _posts
   - scope:
       path: ""
-      type: posts
+      type: docs
     values:
       layout: single
       show_date: true # 포스팅 날짜 표시
