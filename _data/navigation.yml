@@ -3,55 +3,20 @@ main:
   - title: "Algorithm"
     url: /Algorithm/
   - title: "Baekjoon"
-    url: /Baekjoon/
+    sublinks:
+      - title: 다익스트라
+        url: /Baekjoon/다익스트라/
+      - title: 벨만포드
+        url: /Baekjoon/벨만포드/
+      - title: 플로이드 와샬
+        url: /Baekjoon/플로이드 와샬/
+      - title: DFS
+        url: /Baekjoon/DFS/
+      - title: BFS
+        url: /Baekjoon/BFS/
   - title: "Web"
     url: /Web/
   - title: "Tags"
     url: /tags/
   - title: "Year"
     url: "/year-archive/"
-
-docs:
-  - title: Getting Started
-    children:
-      - title: "Quick-Start Guide"
-        url: /docs/quick-start-guide/
-      - title: "Structure"
-        url: /docs/structure/
-      - title: "Installation"
-        url: /docs/installation/
-      - title: "Upgrading"
-        url: /docs/upgrading/
-
-  - title: Customization
-    children:
-      - title: "Configuration"
-        url: /docs/configuration/
-      - title: "Navigation"
-        url: /docs/navigation/
-      - title: "UI Text"
-        url: /docs/ui-text/
-      - title: "Authors"
-        url: /docs/authors/
-      - title: "Layouts"
-        url: /docs/layouts/
-
-  - title: Content
-    children:
-      - title: "Working with Posts"
-        url: /docs/posts/
-      - title: "Working with Pages"
-        url: /docs/pages/
-      - title: "Working with Collections"
-        url: /docs/collections/
-      - title: "Helpers"
-        url: /docs/helpers/
-      - title: "Utility Classes"
-        url: /docs/utility-classes/
-
-  - title: Extras
-    children:
-      - title: "Stylesheets"
-        url: /docs/stylesheets/
-      - title: "JavaScript"
-        url: /docs/javascript/
