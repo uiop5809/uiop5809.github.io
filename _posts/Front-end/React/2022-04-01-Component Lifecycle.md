@@ -26,7 +26,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 # Component Lifecycle(< v16.3)
 
 리액트 컴포넌트는 탄생부터 죽음까지 여러지점에서 개발자가 작업이 가능하도록 메서드를 오버라이딩 할 수 있게 해준다.  
-![Declarative](../../images/%EB%94%94%ED%81%B4%EB%A0%88%EB%9F%AC%ED%8B%B0%EB%B8%8C.png)
+![Declarative](../../../images/algorithm/디클레러티브.png)
 
 ## Component 생성 및 마운트
 
@@ -217,7 +217,7 @@ ReactDOM.render(<App name="Yejin" />, document.querySelector("#root"));
 # Component Lifecycle(v16.3)
 
 리액트 컴포넌트는 탄생부터 죽음까지 여러지점에서 개발자가 작업이 가능하도록 메서드를 오버라이딩 할 수 있게 해준다.  
-![라이프사이클](../../images/%EC%82%AC%EC%9D%B4%ED%81%B4.png)
+![라이프사이클](../../../images/algorithm/사이클.png)
 
 ## Component 생성 및 마운트
 

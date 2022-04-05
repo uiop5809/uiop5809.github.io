@@ -27,7 +27,7 @@ toc_sticky: true # 마우스 스크롤과 함께 내려갈 것인지 설정
 
 ## Props와 State
 
-![props와 state](../../images/props%EC%99%80%20state.png)
+![props와 state](../../../images/algorithm/props와 state.png)
 
 ## Render 함수
 
@@ -35,7 +35,7 @@ Props와 State를 바탕으로 컴포넌트를 그린다.
 그리고 Props와 State가 변경되면, 컴포넌트를 다시 그린다.  
 컴포넌트를 그리는 방법을 기술하는 함수가 랜더 함수이다.
 
-![render](../../images/render%ED%95%A8%EC%88%98.png)
+![render](../../../images/algorithm/render함수.png)
 
 ## function 컴포넌트(props) {return JSX;}
 
