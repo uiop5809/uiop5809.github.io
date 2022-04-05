@@ -16,9 +16,9 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale: "ko-KR"
-title: "Yejin's Velog🌟"
+title: "Yejin's Velog"
 title_separator: "-"
-subtitle: 개발 블로그 TIL
+subtitle: 개발 블로그 Today I Learned
 name: "Park Ye Jin"
 description: "Web Developer in The Future ISTJ"
 url: "https://uiop5809.github.io"
