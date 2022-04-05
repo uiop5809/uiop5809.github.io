@@ -16,9 +16,9 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 # Site Settings
 locale: "ko-KR"
-title: "🌟Yejin's Velog"
+title: "Yejin's Velog🌟"
 title_separator: "-"
-subtitle: 개발 블로그
+subtitle: 개발 블로그 TIL
 name: "Park Ye Jin"
 description: "Web Developer in The Future ISTJ"
 url: "https://uiop5809.github.io"
@@ -104,7 +104,7 @@ author:
   name: "Park Ye Jin"
   avatar: "/assets/images/hs.jpg" # "/assets/images/bio-photo.jpg"
   bio: "Web Developer in The Future ISTJ"
-  location: "Incheon Metropolitan City"
+  # location: "Incheon Metropolitan City"
   email:
   links:
     - label: "Email"
@@ -124,7 +124,7 @@ author:
       url: "https://github.com/uiop5809"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/park_ye_jin__/"
+      # url: "https://instagram.com/park_ye_jin__/"
 
 # Site Footer
 footer:
