@@ -12,6 +12,14 @@
       </li>
       <li>
         <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+        <span class="nav__sub-title">Front-end</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "React" %}
+                        <li><a href="/categories/React" class=""> React 공부 기록 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
         <span class="nav__sub-title">Baekjoon</span>
             <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
             <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
@@ -50,14 +58,14 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        <span class="nav__sub-title">Front-end</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "React" %}
-                        <li><a href="/categories/React" class=""> React 공부 기록 ({{category[1].size}})</a></li>
+                    {% if category[0] == "TopologySort" %}
+                        <li><a href="/categories/TopologySort" class=""> 위상정렬 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
+        
       </li>
   </ul>
 </nav>
