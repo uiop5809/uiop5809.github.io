@@ -16,7 +16,14 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "React" %}
-                        <li><a href="/categories/React" class=""> React 공부 기록 ({{category[1].size}})</a></li>
+                        <li><a href="/categories/React" class=""> React ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Redux" %}
+                        <li><a href="/categories/Redux" class=""> Redux ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -65,7 +72,15 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-        
+
+        <span class="nav__sub-title">Algorithm</span>
+        <ul>
+            {% for category in site.categories %}
+                {% if category[0] == "Algorithm" %}
+                    <li><a href="/categories/Algorithm" class=""> 알고리즘 ({{category[1].size}})</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
       </li>
   </ul>
 </nav>
