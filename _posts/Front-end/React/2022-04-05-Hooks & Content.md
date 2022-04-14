@@ -610,6 +610,16 @@ function E({ setValue }) {
 1. 컨텍스트.프로바이더를 사용한다.
 1. value를 사용
 
+contexts/PersonContext
+
+```jsx
+import React from "react";
+
+const PersonContext = React.createContext();
+
+export default PersonContext;
+```
+
 가장 상위 컴포넌트 index.js에 프로바이더를 해준다.
 
 ```jsx
@@ -634,20 +644,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-```
-
-contexts/PersonContext
-
-```jsx
-import React from "react";
-
-const PersonContext = React.createContext();
-
-export default PersonContext;
 ```
 
 ## 데이터를 Get하기(1) - Consumer

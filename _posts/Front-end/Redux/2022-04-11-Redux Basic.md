@@ -99,7 +99,7 @@ function addTodo(todo) {
 }
 ```
 
-# Reducers - 리듀서
+# Reducers 리듀서
 
 - 액션을 주면, 그 액션이 적용되어 달라진(안 달라질 수도 있음) 결과를 만들어 준다.
 - 그냥 함수이다.
@@ -228,7 +228,529 @@ reportWebVitals();
 
 # combineReducers
 
-// [{text: "코딩", done: false}, {text: "점심 먹기", done: false}]
-// {todos: [{text: "코딩", done: false}, {text: "점심 먹기", done: false}], filter: "ALL"}
+{todos: [{text: "코딩", done: false}, {text: "점심 먹기", done: false}], filter: "ALL"}
+
+redux/reducers/reducer.js
+
+```js
+import { combineReducers } from "redux";
+import todos from "./todos";
+import filter from "./filter";
+
+const reducer = combineReducers({
+  todos,
+  filter,
+});
+
+export default reducer;
+```
+
+redux/reducers/filter.js
+
+```js
+import { SHOW_COMPLETE, SHOW_ALL } from "../actions.js";
+
+const initialState = "ALL";
+
+// filter에만 영향을 준다.
+export default function filterReducer(
+  previousState = initialState.filter,
+  action
+) {
+  if (action.type === SHOW_COMPLETE) {
+    return "COMPLETE";
+  }
+
+  if (action.type === SHOW_ALL) {
+    return "ALL";
+  }
+
+  return previousState;
+}
+```
+
+redux/reducers/todos.js
+
+```js
+import { ADD_TODO, COMPLETE_TODO } from "../actions.js";
+
+const initialState = [];
+
+// todos에만 영향을 준다.
+export default function todosReducer(
+  previousState = initialState.todos,
+  action
+) {
+  if (action.type === ADD_TODO) {
+    return [...previousState, { text: action.text, done: false }];
+  }
+
+  if (action.type === COMPLETE_TODO) {
+    return previousState.map((todo, index) => {
+      if (index === action.index) {
+        return { ...todo, done: true };
+      }
+      return todo;
+    });
+  }
+
+  return previousState;
+}
+```
+
+redux/actions.js
+
+```js
+export const ADD_TODO = "ADD_TODO";
+export const COMPLETE_TODO = "COMPLETE_TODO";
+
+// {type: ADD_TODO, text: "할 일"}
+export function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text,
+  };
+}
+
+// index를 받아서 done을 바꿔준다
+// {type: COMPLETE_TODO, index: 3}
+export function completeTodo(index) {
+  return {
+    type: COMPLETE_TODO,
+    index,
+  };
+}
+
+export const SHOW_ALL = "SHOW_ALL";
+export const SHOW_COMPLETE = "SHOW_COMPLETE";
+
+export function showALL() {
+  return { type: SHOW_ALL };
+}
+
+export function showComplete() {
+  return { type: SHOW_COMPLETE };
+}
+```
+
+redux/store.js
+
+```js
+import { createStore } from "redux";
+import todoApp from "./reducers/reducer";
+
+const store = createStore(todoApp); // 스토어 만드는 함수
+
+export default store;
+```
 
 # Redux를 React에 연결
+
+단일 store를 만들고,  
+subscribe와 getState를 이용하여,  
+변경되는 state 데이터를 얻어,  
+props로 계속 아래로 전달
+
+componentDidMount - subscribe  
+componentWillUnmount - unsubscribe
+
+=> pros 방법
+
+index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import store from "./redux/store";
+import ReduxContext from "./contexts/ReduxContext.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App store={store} />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+```
+
+App.js
+
+```js
+import logo from "./logo.svg";
+import "./App.css";
+import { useEffect, useState } from "react";
+import { addTodo } from "./redux/actions";
+
+function App({ store }) {
+  const [state, setState] = useState(store.getState());
+
+  useEffect(() => {
+    const unsubscirbe = store.subscribe(() => {
+      setState(store.getState());
+    });
+
+    // willUnmount에서 실행되는
+    return () => {
+      unsubscirbe();
+    };
+  }, [store]); // 한번만 실행되고
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        {/* state는 object이기 때문에 문자열로 바꿔 출력 */}
+        {JSON.stringify(state)}
+        <button onClick={click}>추가</button>
+      </header>
+    </div>
+  );
+
+  function click() {
+    store.dispatch(addTodo("todo"));
+  }
+}
+
+export default App;
+```
+
+## react-redux 안 쓰고 연결하기
+
+### components
+
+TodoList.jsx
+
+```jsx
+import useReduxState from "./../hooks/useReduxState";
+
+export default function TodoList() {
+  const state = useReduxState();
+
+  return (
+    <ul>
+      {state.todos.map((todo) => {
+        return <li>{todo.text}</li>;
+      })}
+    </ul>
+  );
+}
+```
+
+TodoForm.jsx
+
+```jsx
+import { useRef } from "react";
+import useReduxDispatch from "./../hooks/useReduxDispatch";
+import { addTodo } from "./../redux/actions";
+
+// unCotrolledComponent
+export default function TodoForm() {
+  const inputRef = useRef();
+  const dispatch = useReduxDispatch();
+
+  return (
+    <div>
+      <input ref={inputRef} />
+      <button onclick={click}>추가</button>
+    </div>
+  );
+
+  function click() {
+    dispatch(addTodo(inputRef.current.value));
+  }
+}
+```
+
+### hooks
+
+useReduxState.js
+
+```js
+import { useContext, useEffect, useState } from "react";
+import ReduxContext from "./../contexts/ReduxContext";
+
+export default function useReduxState() {
+  const store = useContext(ReduxContext);
+  const [state, setState] = useState(store.getState());
+
+  useEffect(() => {
+    const unsubscirbe = store.subscribe(() => {
+      setState(store.getState());
+    });
+
+    // willUnmount에서 실행되는
+    return () => {
+      unsubscirbe();
+    };
+  }, [store]); // 한번만 실행되고
+
+  return state;
+}
+```
+
+useReduxDispatch.js
+
+```js
+import { useContext } from "react";
+import ReduxContext from "./../contexts/ReduxContext";
+
+export default function useReduxDispatch() {
+  const store = useContext(ReduxContext);
+
+  return store.dispatch;
+}
+```
+
+### contexts
+
+ReduxContext.js
+
+```js
+import { createContext } from "react";
+
+const ReduxContext = createContext();
+
+export default ReduxContext;
+```
+
+### App.js
+
+```js
+import logo from "./logo.svg";
+import "./App.css";
+import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm";
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <TodoList />
+        <TodoForm />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import store from "./redux/store";
+import ReduxContext from "./contexts/ReduxContext.js";
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* 앱 하위에 있는 모든 컴포넌트들은 store를 꺼내 쓸 수 있음 */}
+    <ReduxContext.Provider value={store}>
+      <App />
+    </ReduxContext.Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+```
+
+## react-redux 쓰고 연결하기
+
+=> react-redux
+
+- provider 컴포넌트를 제공해준다.
+- connect 함수를 통해 "컨네이너"를 만들어준다.
+
+  - 컨테이너는 스토어의 state와 dispatch(액션)을 연결한 컴포넌트에 props로 넣어주는 역할을 한다.
+  - 그렇다면 필요한 거은?
+
+    - 어떤 state를 어떤 props에 연결할 것인지에 대한 정의
+    - 어떤 dispatch(액션)을 어떤 props에 연결할 것인지에 대한 정의
+    - 그 props를 보낼 컴포넌트 정의
+
+```bash
+npm i react-redux
+```
+
+### containers
+
+TodoFormContainer.jsx  
+=> HOC 방식
+
+```jsx
+import { connect } from "react-redux";
+import { addTodo } from "./../redux/actions";
+import TodoForm from "../components/TodoForm";
+
+// 컨테이너 또는 스마트한 컴포넌트
+// store와 프레젠테이션 컴포넌트를 이어주는 컴포넌트
+const TodoFormContainer = connect(
+  (state) => ({}),
+  (dispatch) => ({
+    add: (text) => {
+      dispatch(addTodo(text));
+    },
+  })
+)(TodoForm);
+
+export default TodoFormContainer;
+```
+
+=> Hooks 방식
+
+```jsx
+import { useDispatch } from "react-redux";
+import { addTodo } from "./../redux/actions";
+import TodoForm from "../components/TodoForm";
+import { useCallback } from "react";
+
+export default function TodoFormContainer() {
+  const dispatch = useDispatch();
+
+  const add = useCallback(
+    (text) => {
+      dispatch(addTodo(text));
+    },
+    [dispatch]
+  );
+
+  return <TodoForm add={add} />;
+}
+```
+
+TodoListContainer.jsx  
+=> HOC 방식
+
+```jsx
+import { connect } from "react-redux";
+import TodoList from "./../components/TodoList";
+
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+// 실행한 결과물이 HOC함수가 된다. 그러므로 함수를 다시 실행
+// connect 함수를 실행한 결과가 함수고, 그 함수를 실행한 결과가 컨테이너이다.
+const TodoListContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoList);
+
+export default TodoListContainer;
+```
+
+=> Hooks 방식
+
+```jsx
+import { useSelector } from "react-redux";
+import TodoList from "./../components/TodoList";
+
+function TodoListContainer() {
+  const todos = useSelector((state) => state.todos);
+
+  return <TodoList todos={todos} />;
+}
+
+export default TodoListContainer;
+```
+
+### components
+
+TodoForm.jsx
+
+```jsx
+import { useRef } from "react";
+
+// 프레젠테이션 컴포넌트
+export default function TodoForm({ add }) {
+  const inputRef = useRef();
+
+  return (
+    <div>
+      <input ref={inputRef} />
+      <button onclick={click}>추가</button>
+    </div>
+  );
+
+  function click() {
+    add(inputRef.current.value);
+  }
+}
+```
+
+TodoList.jsx
+
+```jsx
+export default function TodoList({ todos }) {
+  return (
+    <ul>
+      {todos.map((todo) => {
+        return <li>{todo.text}</li>;
+      })}
+    </ul>
+  );
+}
+```
+
+### App.js
+
+```js
+import logo from "./logo.svg";
+import "./App.css";
+import TodoListContainer from "./containers/TodoListContainer";
+import TodoFormContainer from "./containers/TodoFormContainer";
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <TodoListContainer />
+        <TodoFormContainer />
+      </header>
+    </div>
+  );
+}
+
+export default App;
+```
+
+### index.js
+
+```js
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import store from "./redux/store";
+import { Provider } from "react-redux";
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* value가 아닌 props로 정확한 이름 받음 */}
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+
+reportWebVitals();
+```
