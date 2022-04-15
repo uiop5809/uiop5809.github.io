@@ -411,6 +411,10 @@ export default function Example7() {
 
 ## useRef
 
+useRef는 인자로 넘어온 초깃값을 useRef 객체의 .current 프로퍼티에 저장한다. DOM 객체를 직접 가리켜서 내부 값을 변경하거나 focus() 메서드를 사용하거나 하는 때에 주로 사용하고, 변경되어도 컴포넌트가 리렌더링되지 않도록 하기 위한 값들을 저장하기 위해서도 사용한다.(이는 useRef가 내용이 변경되어도 이를 알려주지 않기 때문이다.) .current 프로퍼티를 변경시키는 것은 리렌더링을 발생시키지 않고, 따라서 로컬 변수 용도로 사용할 수 있다.
+
+본질적으로 useRef는 .current 프로퍼티에 변경 가능한 값을 담고 있는 "상자"와 같다.
+
 createRef는 항상 reference를 생성해서 render될 때 넣어주는 것이고,  
 useRef는 render사이에도 유지해주는 큰 차이가 있다.
 
