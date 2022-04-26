@@ -27,6 +27,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+
         <span class="nav__sub-title">Baekjoon</span>
             <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
             <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
@@ -72,15 +73,31 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Union-Find" %}
+                        <li><a href="/categories/Union-Find" class=""> 유니온 파인드 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
         <span class="nav__sub-title">Algorithm</span>
-        <ul>
-            {% for category in site.categories %}
-                {% if category[0] == "Algorithm" %}
-                    <li><a href="/categories/Algorithm" class=""> 알고리즘 ({{category[1].size}})</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Algorithm" %}
+                        <li><a href="/categories/Algorithm" class=""> 알고리즘 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+        <span class="nav__sub-title">Nomadcoder</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "nomadcoder" %}
+                        <li><a href="/categories/nomadcoder" class=""> React 영화 웹 사이트 ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
       </li>
   </ul>
 </nav>
