@@ -40,28 +40,21 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Level1" %}
-                        <li><a href="/categories/Level1" class=""> Level1({{category[1].size}})</a></li>
+                        <li><a href="/categories/Level1" class=""> Level1 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Level2" %}
-                        <li><a href="/categories/Level2" class=""> Level2({{category[1].size}})</a></li>
+                        <li><a href="/categories/Level2" class=""> Level2 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Level3" %}
-                        <li><a href="/categories/Level3" class=""> Level3({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Programmers" %}
-                        <li><a href="/categories/Programmers" class=""> Level 1({{category[1].size}})</a></li>
+                        <li><a href="/categories/Level3" class=""> Level3 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
