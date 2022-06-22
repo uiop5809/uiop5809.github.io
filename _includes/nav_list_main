@@ -36,6 +36,30 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+
+        <span class="nav__sub-title">Project</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Recipe" %}
+                        <li><a href="/categories/Recipe" class=""> [React] 레시피 사이트</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Shopping" %}
+                        <li><a href="/categories/Shopping" class=""> [React] 쇼핑몰 만들기</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Movie" %}
+                        <li><a href="/categories/Movie" class=""> [React] 영화 웹 사이트 nomad</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            
         <span class="nav__sub-title">Programmers</span>
             <ul>
                 {% for category in site.categories %}
@@ -137,15 +161,6 @@
                 {% for category in site.categories %}
                     {% if category[0] == "Algorithm" %}
                         <li><a href="/categories/Algorithm" class=""> 알고리즘 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
-        <span class="nav__sub-title">Nomadcoder</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "nomadcoder" %}
-                        <li><a href="/categories/nomadcoder" class=""> React 영화 웹 사이트 ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
