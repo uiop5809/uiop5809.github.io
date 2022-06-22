@@ -23,14 +23,14 @@ name: "Park Ye Jin"
 description: "Web Developer in The Future ISTJ"
 url: "https://uiop5809.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
-repository: "https://github.com/uiop5809"
+repository: "uiop5809/comments"
 teaser: # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo: # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title: # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute: 200
 comments:
-  provider: "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
+  provider: "utterances" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   disqus:
     shortname: "pbread" # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
   discourse:
@@ -41,8 +41,8 @@ comments:
     num_posts: # 5 (default)
     colorscheme: # "light" (default), "dark"
   utterances:
-    theme: # "github-light" (default), "github-dark"
-    issue_term: # "pathname" (default)
+    theme: "github-dark" # (default), "github-dark"
+    issue_term: "pathname" # (default)
   giscus:
     repo_id: # Shown during giscus setup at https://giscus.app
     category_name: # Full text name of the category
